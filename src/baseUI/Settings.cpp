@@ -54,12 +54,10 @@ void SettingsManager::update() {
     
     int touchX, touchY;
     if (tft.getTouch(&touchX, &touchY)) {
-        // Volání přejmenované metody
         handleTouch(touchX, touchY);
     }
 }
 
-// Přejmenováno z handleInput na handleTouch
 bool SettingsManager::handleTouch(int touchX, int touchY) {
     if (volumeTrackBar.handleTouch(touchX, touchY)) {
         int newVolume = volumeTrackBar.getValue();

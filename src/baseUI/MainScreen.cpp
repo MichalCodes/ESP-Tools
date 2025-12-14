@@ -1,5 +1,4 @@
 #include "MainScreen.h"
-#include <Arduino.h>
 
 MainScreen::MainScreen(LGFX& display, 
            const char* title,
@@ -34,17 +33,14 @@ void MainScreen::draw() {
     for (IAppModule* module : modules) {
         if (module == nullptr) continue; 
 
-        // 1. Vykreslení oblasti tlačítka
         tft.fillRect(currentX, currentY, ICON_WIDTH, ICON_HEIGHT, TFT_WHITE);
         tft.drawRect(currentX, currentY, ICON_WIDTH, ICON_HEIGHT, TFT_BLACK);
         
-        // 2. Vykreslení textu 
         tft.setTextColor(TFT_BLACK);
         tft.setTextSize(2); 
         tft.setTextDatum(MC_DATUM); 
         tft.drawString(module->getName(), currentX + ICON_WIDTH/2, currentY + ICON_HEIGHT/2);
 
-        // 3. Uložení dotykové oblasti
         iconAreas.push_back({currentX, currentY, ICON_WIDTH, ICON_HEIGHT, module});
 
         currentX += ICON_WIDTH + ICON_SPACING;
@@ -65,13 +61,11 @@ IAppModule* MainScreen::handleTouch() {
     
     if (tft.getTouch(&touchX, &touchY)) {
         
-        // 1. Tlačítko Nastavení
         if (isSettingsButtonTouched()) {
             settingsManager.show();
             return settingsManager.isActive() ? nullptr : nullptr; 
         }
         
-        // 2. Dynamické ikony
         for (const auto& area : iconAreas) {
             if (touchX >= area.x && touchX <= area.x + area.w &&
                 touchY >= area.y && touchY <= area.y + area.h) {

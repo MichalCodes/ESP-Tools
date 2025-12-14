@@ -1,5 +1,4 @@
 #include "TrackBar.h"
-#include <Arduino.h>
 
 TrackBar::TrackBar(LGFX& tftObj, int startX, int startY, int w, int h, 
          int minVal, int maxVal, int initialVal)

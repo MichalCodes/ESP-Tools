@@ -1,5 +1,5 @@
 #pragma once
-#include "gfx_conf.h" 
+#include "hw/gfx_conf.h" 
 
 class TrackBar {
 private:

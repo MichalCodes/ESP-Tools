@@ -1,7 +1,7 @@
 #ifndef IAPP_MODULE_H
 #define IAPP_MODULE_H
 
-#include "gfx_conf.h" // Zajišťuje definici LGFX
+#include "hw/gfx_conf.h"
 
 /**
  * @brief Rozhraní, které musí implementovat každá hra/aplikace, 

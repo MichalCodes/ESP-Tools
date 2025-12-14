@@ -1,9 +1,9 @@
 #pragma once
 
-#include "gfx_conf.h" 
-#include "Button.h" 
-#include "AudioManager.h" 
-#include "TrackBar.h"
+#include "hw/gfx_conf.h" 
+#include "touch/Button.h" 
+#include "hw/AudioManager.h" 
+#include "touch/TrackBar.h"
 
 class SettingsManager {
 private:
@@ -23,13 +23,10 @@ public:
     bool isActive() const;
     void show();
     void hide();
-
     void drawScreen();
-    // TATO METODA ŘEŠÍ DOTYK A NAHRAZUJE CHYBNÉ VOLÁNÍ Z main.cpp
     void update(); 
 
 private:
     void drawVolumeValue(int volume);
-    // TATO METODA JE NYNÍ PRIVÁTNÍ A VOLANÁ Z update()
     bool handleTouch(int touchX, int touchY);
 };

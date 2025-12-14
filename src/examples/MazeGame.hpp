@@ -1,11 +1,11 @@
 #pragma once
 #include <LovyanGFX.hpp>
-#include "Joystick.h"
-#include "Button.h"
+#include "touch/Joystick.h"
+#include "touch/Button.h"
 #include "levels.h"
-#include "AudioManager.h"
-#include "FileLoader.h"
-#include "IAppModule.h"
+#include "hw/AudioManager.h"
+#include "hw/FileLoader.h"
+#include "baseUI/IAppModule.h"
 
 class MazeGame : public IAppModule {
 public:

@@ -10,41 +10,41 @@
 #include <LovyanGFX.hpp>
 
 #ifdef JOYSTICK_H
-    #include "Joystick.h"
+    #include "touch/Joystick.h"
 #endif
 
 #ifdef SWIPECONTROLLER_H
-    #include "SwipeController.h"
+    #include "touch/SwipeControler.h"
 #endif
 
 #ifdef BUTTON_H
-    #include "Button.h"
+    #include "touch/Button.h"
 #endif
 
 #ifdef TRACKBAR_H
-    #include "TrackBar.h"
+    #include "touch/TrackBar.h"
 #endif
 
 // ============ HARDWARE / SYSTEM ============
 #ifdef FILELOADER_H
-    #include "FileLoader.h"
+    #include "hw/FileLoader.h"
 #endif
 
 #ifdef AUDIOMANAGER_H
     #ifndef FILELOADER_H 
-        #include "FileLoader.h"
+        #include "hw/FileLoader.h"
     #endif
-    #include "AudioManager.h"
+    #include "hw/AudioManager.h"
 #endif
 
 // ============ UI / SCREENS ============
 #ifdef MAINSCREEN_H
     #ifndef BUTTON_H
-        #include "Button.h"
+        #include "touch/Button.h"
     #endif
-    #include "IAppModule.h"
-    #include "MainScreen.h"
-    #include "Settings.h"
+    #include "baseUI/IAppModule.h"
+    #include "baseUI/MainScreen.h"
+    #include "baseUI/Settings.h"
 #endif
 
 #endif 

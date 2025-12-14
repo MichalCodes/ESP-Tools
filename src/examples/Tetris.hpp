@@ -1,8 +1,7 @@
 #pragma once
 #include <LovyanGFX.hpp>
-#include "Button.h"
-#include "AudioManager.h"
-#include "IAppModule.h"
+
+#include "tools.h"
 
 class GameTetris : public IAppModule {
 public:

@@ -56,21 +56,21 @@ const bool level2[MAZE_HEIGHT][MAZE_WIDTH] = {
 
 // ===== LEVEL 3 =====
 const bool level3[MAZE_HEIGHT][MAZE_WIDTH] = {
-    // podobně, složitější cestičky, průchozí
+
 };
 
 // ===== LEVEL 4 =====
 const bool level4[MAZE_HEIGHT][MAZE_WIDTH] = {
-    // složitější, průchozí
+
 };
 
 // ===== LEVEL 5 =====
 const bool level5[MAZE_HEIGHT][MAZE_WIDTH] = {
-    // největší složitost, průchozí
+
 };
 
 // Ukazatel pro MazeGame
 const bool (*levels[5])[MAZE_WIDTH] = { level1, level2, level3, level4, level5 };
 
 
-#endif /* CE4F4D73_A6FE_4490_AF2C_8FD843D664CA */
+#endif

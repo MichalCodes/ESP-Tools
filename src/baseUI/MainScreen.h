@@ -2,8 +2,8 @@
 #define MAIN_SCREEN_HPP
 
 #include <vector>
-#include "gfx_conf.h" 
-#include "Button.h"
+#include "hw/gfx_conf.h" 
+#include "touch/Button.h"
 #include "Settings.h" 
 #include "IAppModule.h" 
 

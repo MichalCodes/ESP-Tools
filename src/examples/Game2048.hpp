@@ -1,8 +1,8 @@
 #pragma once
 #include <LovyanGFX.hpp>
-#include "Button.h"
-#include "SwipeControler.h"
-#include "IAppModule.h"
+#include "touch/Button.h"
+#include "touch/SwipeControler.h"
+#include "baseUI/IAppModule.h"
 
 class Game2048 : public IAppModule {
 public:
@@ -266,13 +266,11 @@ private:
                 }
             }
         }
-
-        // vykresli score vedle herního pole
         drawScore();
     }
 
     void drawScore() {
-        int x = 450;  // pozice napravo od herního pole
+        int x = 450;
         int y = 150;
 
         tft.fillRect(x, y, 300, 150, TFT_GREEN);

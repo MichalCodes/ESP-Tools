@@ -1,7 +1,6 @@
 #pragma once
 
-#include "gfx_conf.h" 
-#include <Arduino.h>  
+#include "hw/gfx_conf.h"  
 
 class Button {
 public:
