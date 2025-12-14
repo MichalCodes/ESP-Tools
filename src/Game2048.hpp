@@ -2,8 +2,9 @@
 #include <LovyanGFX.hpp>
 #include "Button.hpp"
 #include "SwipeControler.hpp"
+#include "IAppModule.h"
 
-class Game2048 {
+class Game2048 : public IAppModule {
 public:
     Game2048(LGFX &tft)
     : tft(tft),
@@ -15,8 +16,11 @@ public:
         resetBoard();
     }
 
-    bool isInGame() { return active; }
+    bool isActive() const override { return active; }
     void exitGame() { active = false; }
+    void run() override { drawScreen(); }
+    const char* getName() const override { return "2048"; }
+    const char* getIconPath() const override { return "/icons/2048.bmp"; }
 
     void drawScreen() {
         active = true;

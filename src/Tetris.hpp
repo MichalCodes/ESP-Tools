@@ -1,25 +1,32 @@
 #pragma once
 #include <LovyanGFX.hpp>
 #include "Button.hpp"
-#include "AudioManager.h"  // tvůj MusicManager
+#include "AudioManager.h"
+#include "IAppModule.h"
 
-class GameTetris {
+class GameTetris : public IAppModule {
 public:
     GameTetris(LGFX &tft, AudioManager &music)
     : tft(tft),
       musicManager(music),
-      btnLeft(50, 400, 80, 60, "L", tft),
-      btnRight(650, 400, 100, 60, "R", tft),
-      btnRotate(500, 400, 100, 60, "Rot", tft),
-      btnDown(200, 400, 80, 60, "Down", tft),
-      btnBack(650, 20, 100, 40, "Back", tft),
-      active(false)
+      // Tlačítka srovnána
+      btnLeft(20, 400, 100, 60, "Left", tft),    
+      btnRight(130, 400, 100, 60, "Right", tft), 
+      btnDown(565, 400, 100, 60, "Down", tft),    
+      btnRotate(680, 400, 100, 60, "Rotate", tft), 
+      btnBack(650, 20, 100, 40, "Back", tft),     
+      active(false),
+      score(0) 
     {
         randomSeed(millis());
         reset();
     }
 
-    bool isActive() const { return active; }
+    // --- Implementace IAppModule ---
+    const char* getName() const override { return "Tetris"; }
+    const char* getIconPath() const override { return "/icons/tetris.bmp"; }
+    void run() override { startGame(); }
+    bool isActive() const override { return active; }
 
     void startGame() {
         active = true;
@@ -54,9 +61,17 @@ public:
         }
 
         if (btnDown.isTouched()) {
-            dropPiece();
+            if (!move(0, 1)) {
+                placePiece(); 
+                if (clearLines()) {
+                    drawBoard();
+                    drawScore();
+                }
+                spawnPiece();
+                if (collides()) showGameOver();
+            }
             drawBoard();
-            delay(150);
+            delay(100); 
         }
 
         if (btnRotate.isTouched()) {
@@ -69,7 +84,13 @@ public:
         if (millis() - lastUpdate > fallDelay) {
             lastUpdate = millis();
             if (!move(0, 1)) {
-                dropPiece(); // dopadl kus -> SFX uvnitř dropPiece()
+                placePiece(); 
+                if (clearLines()) {
+                    drawBoard();
+                    drawScore();
+                }
+                spawnPiece();
+                if (collides()) showGameOver();
             }
             drawBoard();
         }
@@ -83,6 +104,7 @@ private:
     AudioManager &musicManager;
     Button btnLeft, btnRight, btnRotate, btnDown, btnBack;
     bool active;
+    long score;
 
     static const int W = 10;
     static const int H = 20;
@@ -92,9 +114,12 @@ private:
     int currentPiece;
     int rotation;
     unsigned long lastUpdate = 0;
-    int fallDelay = 500; // ms
-
-    // všechny tvary kostek
+    int fallDelay = 500; 
+    
+    // Zde by normálně byly deklarace, ale jelikož je definujeme přímo zde, stačí definice.
+    // Zbytek kódu jsou definice privátních metod
+    
+    // Všechny tvary kostek
     const int shapes[7][4][4][4] = {
         // I
         {{{0,0,0,0},{1,1,1,1},{0,0,0,0},{0,0,0,0}},
@@ -132,9 +157,12 @@ private:
          {{0,0,0,0},{1,1,0,0},{0,1,1,0},{0,0,0,0}},
          {{0,1,0,0},{1,1,0,0},{1,0,0,0},{0,0,0,0}}}
     };
-
+    
+    // DEFINICE METOD (jsou v tomto pořadí potřeba, protože volají jedna druhou)
+    
     void reset() {
         memset(board, 0, sizeof(board));
+        score = 0;
         spawnPiece();
     }
 
@@ -172,13 +200,6 @@ private:
         if(!collides(0, 0, newRot)) rotation = newRot;
     }
 
-    void dropPiece() {
-        while(move(0,1));
-        placePiece();
-        spawnPiece();
-        if (collides()) showGameOver();
-    }
-
     void placePiece() {
         for(int y=0;y<4;y++)
             for(int x=0;x<4;x++)
@@ -189,15 +210,17 @@ private:
                         board[ny][nx] = currentPiece+1;
                 }
     }
-
+    
     bool clearLines() {
         bool anyCleared = false;
+        int linesCleared = 0; 
         for(int y=H-1;y>=0;y--){
             bool full = true;
             for(int x=0;x<W;x++)
                 if(!board[y][x]) { full=false; break; }
             if(full){
                 anyCleared = true;
+                linesCleared++; 
                 for(int yy=y;yy>0;yy--)
                     for(int x=0;x<W;x++)
                         board[yy][x] = board[yy-1][x];
@@ -206,26 +229,55 @@ private:
                 y++;
             }
         }
+        
+        if (linesCleared > 0) {
+            if (linesCleared == 1) score += 100;
+            else if (linesCleared == 2) score += 300;
+            else if (linesCleared == 3) score += 500;
+            else if (linesCleared >= 4) score += 800;
+        }
+        
         return anyCleared;
     }
 
-    void drawScreen() {
-        tft.fillScreen(TFT_BLACK);
+    void dropPiece() {
+        while(move(0,1));
+        placePiece();
+        if (clearLines()) {
+            drawBoard();
+            drawScore();
+        }
+        spawnPiece();
+        if (collides()) showGameOver();
+    }
+
+    // --- KRESLICÍ METODY ---
+
+    uint16_t getColor(int n) {
+        static uint16_t colors[8] = {
+            TFT_BLACK, TFT_CYAN, TFT_YELLOW, TFT_MAGENTA,
+            TFT_BLUE, TFT_GREEN, TFT_RED, TFT_ORANGE
+        };
+        return colors[n % 8];
+    }
+    
+    void drawScore() {
+        int x = 20;  
+        int y = 30;
+        
+        tft.fillRect(x, y, 200, 60, TFT_BLACK); 
+        
         tft.setTextColor(TFT_WHITE);
+        tft.setTextSize(2);
+        
+        tft.setCursor(x, y);
+        tft.println("SCORE:");
+        
+        tft.setCursor(x + 10, y + 30);
         tft.setTextSize(3);
-        tft.setCursor(300, 20);
-        tft.println("TETRIS");
-        drawBoard();
+        tft.printf("%ld", score);
     }
-
-    void drawButtons() {
-        btnLeft.draw();
-        btnRight.draw();
-        btnDown.draw();
-        btnRotate.draw();
-        btnBack.draw();
-    }
-
+    
     void drawBoard() {
         int startX = 300, startY = 60;
         int blockSize = 20;
@@ -248,22 +300,37 @@ private:
                 }
     }
 
-    uint16_t getColor(int n) {
-        static uint16_t colors[8] = {
-            TFT_BLACK, TFT_CYAN, TFT_YELLOW, TFT_MAGENTA,
-            TFT_BLUE, TFT_GREEN, TFT_RED, TFT_ORANGE
-        };
-        return colors[n % 8];
+    void drawScreen() {
+        tft.fillScreen(TFT_BLACK);
+        
+        tft.setTextColor(TFT_WHITE);
+        tft.setTextSize(3);
+        tft.setCursor(350, 20);
+        tft.println("TETRIS");
+        
+        drawScore(); 
+        drawBoard();
     }
 
+    void drawButtons() {
+        btnLeft.draw();
+        btnRight.draw();
+        btnDown.draw();
+        btnRotate.draw();
+        btnBack.draw();
+    }
+    
     void showGameOver() {
         musicManager.stopMusic();
         tft.fillRect(250, 200, 300, 100, TFT_RED);
         tft.setTextColor(TFT_WHITE);
         tft.setTextSize(3);
-        tft.setCursor(320, 240);
+        tft.setCursor(260, 220);
         tft.println("GAME OVER");
-        delay(1500);
+        tft.setTextSize(2);
+        tft.setCursor(260, 255);
+        tft.printf("Score: %ld", score); 
+        delay(3000);
         exitGame();
     }
 

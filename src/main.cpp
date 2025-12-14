@@ -1,36 +1,41 @@
 #include <Wire.h>
 #include <SPI.h>
 #include "gfx_conf.h" 
-#include "Game2048.hpp"
-#include "Tetris.hpp"
-#include "MazeGame.hpp"
-#include "Button.hpp"
-#include "SwipeControler.hpp"
-#include "Joystick.h"
 #include "FileLoader.hpp"
 #include "AudioManager.h" 
 #include "Settings.hpp" 
 #include "MainScreen.hpp" 
 
+// Původní hry (nyní se stanou moduly)
+#include "Game2048.hpp"
+#include "Tetris.hpp"
+#include "MazeGame.hpp"
 
+// Nové rozhraní
+#include "IAppModule.h" 
+// Obalové třídy jako Game2048Module.hpp již nejsou potřeba!
+
+
+// ---------- Globální objekty ----------
 FileLoader fileLoader;
 AudioManager musicManager(fileLoader);
 
+// Původní instance her
 MazeGame mazeGame(tft, fileLoader, musicManager); 
 Game2048 game2048(tft);
 GameTetris tetris(tft, musicManager);
 
 SettingsManager settingsManager(musicManager); 
 
-MainScreen mainMenu(tft, game2048, tetris, mazeGame, settingsManager);
+// NOVÝ OBJEKT: Hlavní obrazovka - Nastavíme titulek!
+// FIX: Odstraněny nepotřebné reference na hry z konstruktoru
+MainScreen mainMenu(tft, "ESP Minigame", settingsManager);
 
 
 void setup() {
     Serial.begin(115200);
     delay(2000); 
 
-    Serial.printf("Celková velikost PSRAM: %d bytů\n", ESP.getPsramSize());
-    Serial.printf("Volná PSRAM: %d bytů\n", ESP.getFreePsram());
     tft.begin();
     tft.setTextDatum(0); 
 
@@ -41,7 +46,13 @@ void setup() {
     }
 
     musicManager.begin();
-
+    
+    // --- Nastavení modulů ---
+    // FIX: Nyní přidáváme instance hry přímo, protože implementují IAppModule
+    mainMenu.addModule(game2048);
+    mainMenu.addModule(tetris); 
+    mainMenu.addModule(mazeGame);
+    
     mainMenu.draw();
 }
 
@@ -49,23 +60,21 @@ void loop() {
     musicManager.handleAudio();
 
     if (settingsManager.isActive()) {
-        int touchX, touchY;
+        bool stillActive = settingsManager.handleTouch(); 
         
-        settingsManager.handleTouch(); 
-        
-        if (tft.getTouch(&touchX, &touchY) && mainMenu.isSettingsButtonTouched()) { 
-            settingsManager.hide();
+        if (!stillActive) {
             mainMenu.draw(); 
         }
         
         return; 
     }
 
-    if (game2048.isInGame()) {
+    // Zpracování her: Nyní všechny používají isActive()
+    if (game2048.isActive()) { 
         game2048.update();
-        if (!game2048.isInGame()) mainMenu.draw(); 
+        if (!game2048.isActive()) mainMenu.draw(); 
         return;
-    }
+    } 
 
     if (tetris.isActive()) {
         tetris.update();
@@ -79,5 +88,6 @@ void loop() {
         return;
     }
 
+    // 4. Hlavní menu (Spouštění her a nastavení přes ikony)
     mainMenu.handleTouch();
 }

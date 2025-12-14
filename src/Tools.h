@@ -42,15 +42,15 @@
 #endif
 
 // ============ GAMES ============
-#ifdef GAME2048_H
+#ifdef GAME2048_HPP
     #include "Game2048.hpp"
 #endif
 
-#ifdef TETRIS_H
+#ifdef TETRIS_HPP
     #include "Tetris.hpp"
 #endif
 
-#ifdef MAZEGAME_H
+#ifdef MAZEGAME_HPP
     #include "MazeGame.hpp"
 #endif
 

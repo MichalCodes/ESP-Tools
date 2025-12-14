@@ -5,8 +5,9 @@
 #include "levels.h"
 #include "AudioManager.h"
 #include "FileLoader.hpp"
+#include "IAppModule.h"
 
-class MazeGame {
+class MazeGame : public IAppModule {
 public:
     MazeGame(LGFX &tft, FileLoader &loader, AudioManager &music)
         : tft(tft),
@@ -52,7 +53,10 @@ public:
         movePlayer();
     }
 
-    bool isActive() const { return inGame; }
+    const char* getName() const override { return "RatMaze"; } // NOVÉ
+    const char* getIconPath() const override { return "/icons/maze.bmp"; }
+    void run() override { startGame(); }
+    bool isActive() const override { return inGame; }
 
 private:
     LGFX &tft;
@@ -89,7 +93,7 @@ private:
     void drawLevelNumber() {
         tft.setTextColor(TFT_WHITE, TFT_BLACK);
         tft.setTextSize(2);
-        tft.setCursor(MAZE_WIDTH*20+5, 0);
+        tft.setCursor(MAZE_WIDTH*20+5, 10);
         tft.printf("Level %d/5", currentLevel+1);
     }
 
