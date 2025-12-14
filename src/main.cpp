@@ -60,7 +60,7 @@ void loop() {
     musicManager.handleAudio();
 
     if (settingsManager.isActive()) {
-        
+        settingsManager.update();
         if (!settingsManager.isActive()) {
             mainMenu.draw();
         }
