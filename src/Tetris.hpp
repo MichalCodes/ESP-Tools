@@ -1,6 +1,6 @@
 #pragma once
 #include <LovyanGFX.hpp>
-#include "Button.hpp"
+#include "Button.h"
 #include "AudioManager.h"
 #include "IAppModule.h"
 

@@ -1,7 +1,7 @@
 #pragma once
 #include <LovyanGFX.hpp>
-#include "Button.hpp"
-#include "SwipeControler.hpp"
+#include "Button.h"
+#include "SwipeControler.h"
 #include "IAppModule.h"
 
 class Game2048 : public IAppModule {

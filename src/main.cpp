@@ -1,10 +1,10 @@
 #include <Wire.h>
 #include <SPI.h>
 #include "gfx_conf.h" 
-#include "FileLoader.hpp"
+#include "FileLoader.h"
 #include "AudioManager.h" 
-#include "Settings.hpp" 
-#include "MainScreen.hpp" 
+#include "Settings.h" 
+#include "MainScreen.h" 
 
 // Původní hry (nyní se stanou moduly)
 #include "Game2048.hpp"
@@ -60,10 +60,9 @@ void loop() {
     musicManager.handleAudio();
 
     if (settingsManager.isActive()) {
-        bool stillActive = settingsManager.handleTouch(); 
         
-        if (!stillActive) {
-            mainMenu.draw(); 
+        if (!settingsManager.isActive()) {
+            mainMenu.draw();
         }
         
         return; 
