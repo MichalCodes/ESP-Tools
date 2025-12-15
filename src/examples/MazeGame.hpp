@@ -27,7 +27,7 @@ public:
         playerY = 1;
         drawLevel();
 
-        //musicManager.setVolume(21); // zesílení hudby
+        musicManager.setVolume(21); // zesílení hudby
         musicManager.playMusic("/RatMouse.mp3"); // hlavní hudba
     }
 
@@ -112,7 +112,7 @@ private:
 
     void movePlayer() {
         static unsigned long lastMove = 0;
-        if (millis() - lastMove < 100) return;
+        if (millis() - lastMove < 50) return;
         lastMove = millis();
 
         int jx = joystick.getJoystickX() - 700;

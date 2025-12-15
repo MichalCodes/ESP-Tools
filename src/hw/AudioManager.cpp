@@ -1,44 +1,90 @@
 #include "AudioManager.h"
-#include <SD.h>
-#include <Arduino.h> // pro Serial.println
+#include <Arduino.h>
 
-// --- Implementace AudioManager ---
+AudioManager::AudioManager(FileLoader& loader) 
+    : fileLoader(loader), 
+      volumeStream(i2sStream) 
+{} 
 
-AudioManager::AudioManager(FileLoader& loader) : fileLoader(loader) {}
-
-AudioManager::~AudioManager() {}
+AudioManager::~AudioManager() {
+    stopMusic();
+}
 
 void AudioManager::begin() {
-    Serial.println("AudioManager: Inicializace Audio odložena. Pinout je definován.");
-    // Zde bude později konfigurace I2S pinů:
-    // Např. audioOutput = new AudioOutputI2SNoDAC();
-    // audioOutput->SetPinout(I2S_BCLK_PIN, I2S_LRCK_PIN, I2S_DOUT_PIN);
+    auto cfg = i2sStream.defaultConfig();
+    cfg.pin_bck = I2S_BCLK_PIN;
+    cfg.pin_ws = I2S_LRCK_PIN;
+    cfg.pin_data = I2S_DOUT_PIN;
+    cfg.channels = 2; 
+    cfg.sample_rate = 44100; 
+    cfg.bits_per_sample = 16;
+    cfg.use_apll = true; 
+
+    i2sStream.begin(cfg);
+    
+    AudioInfo defaultInfo(cfg.sample_rate, cfg.channels, cfg.bits_per_sample);
+    volumeStream.begin(defaultInfo); 
+    
+    setVolume(getVolume());
 }
 
 void AudioManager::setVolume(uint8_t vol) {
-    // PLACEHOLDER: Bude implementováno později
     volumeLevel = (vol > 100 ? 100 : vol) / 100.0f;
-    Serial.printf("AudioManager: Hlasitost nastavena na %d%% (placeholder).\n", (int)(volumeLevel * 100));
+    volumeStream.setVolume(volumeLevel);
 }
 
 uint8_t AudioManager::getVolume() const {
-    // PLACEHOLDER: Bude implementováno později
     return (uint8_t)(volumeLevel * 100);
 }
 
 void AudioManager::playMusic(const char* path) {
-    // PLACEHOLDER: Bude implementováno později
+    stopMusic(); 
     currentMusicPath = path;
-    Serial.printf("AudioManager: Požadavek na přehrávání hudby: %s (placeholder).\n", path);
+
+    audioFile = fileLoader.openFile(path); 
+    if (!audioFile) {
+        currentMusicPath = "";
+        return;
+    }
+
+    if (currentMusicPath.endsWith(".mp3")) {
+        decoder = new EncodedAudioStream(&volumeStream, new MP3DecoderHelix()); 
+    } else if (currentMusicPath.endsWith(".wav")) {
+        decoder = new EncodedAudioStream(&volumeStream, new WAVDecoder());
+    } else {
+        currentMusicPath = "";
+        audioFile.close();
+        return;
+    }
+
+    if (decoder) {
+        decoder->begin();
+        AudioInfo info = decoder->audioInfo();
+
+        volumeStream.begin(info); 
+        i2sStream.setAudioInfo(info); 
+        
+        copier.begin(*decoder, audioFile);
+    }
 }
 
 void AudioManager::stopMusic() {
-    // PLACEHOLDER: Bude implementováno později
-    Serial.println("AudioManager: Požadavek na zastavení hudby (placeholder).");
+    if (decoder) {
+        copier.end(); 
+        decoder->end();
+        delete decoder;
+        decoder = nullptr;
+    }
+    if (audioFile) {
+        audioFile.close();
+    }
     currentMusicPath = "";
 }
 
 void AudioManager::handleAudio() {
-    // PLACEHOLDER: Bude implementováno později
-    // Zde bude později audio.loop() nebo mp3Generator->loop()
+    if (decoder) {
+        if (!copier.copy()) {
+            playMusic(currentMusicPath.c_str());
+        }
+    }
 }

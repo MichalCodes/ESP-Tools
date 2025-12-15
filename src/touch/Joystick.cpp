@@ -34,7 +34,8 @@ void Joystick::updateAutoCenter() {
 
     if (dx == 0 && dy == 0) return; 
 
-    int step = 3; 
+    // Zvýšeno z 3 na 8 pro mnohem rychlejší návrat (vyřeší pocit pomalosti)
+    int step = 20; 
     int moveX = (dx > step ? step : (dx < -step ? -step : dx));
     int moveY = (dy > step ? step : (dy < -step ? -step : dy));
 
@@ -54,12 +55,15 @@ bool Joystick::isJoystickTouched(int touchX, int touchY) {
 
 void Joystick::resetJoystick() {
     tft.fillCircle(joystickX, joystickY, innerRadius, bgColor);
-
     joystickX = centerX;
     joystickY = centerY;
-    
     tft.fillCircle(joystickX, joystickY, innerRadius, TFT_RED);
 }
 
-int Joystick::getJoystickX() const { return joystickX; }
-int Joystick::getJoystickY() const { return joystickY; }
+int Joystick::getJoystickX() const {
+    return joystickX;
+}
+
+int Joystick::getJoystickY() const {
+    return joystickY;
+}

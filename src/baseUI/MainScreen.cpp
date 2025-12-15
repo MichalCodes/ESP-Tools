@@ -16,9 +16,9 @@ void MainScreen::addModule(IAppModule& module) {
 void MainScreen::draw() {
     tft.fillScreen(TFT_BLUE);
     tft.fillRect(0, 0, 800, 70, TFT_GREEN);
-    tft.setTextColor(TFT_WHITE);
+    tft.setTextColor(TFT_BLACK);
     tft.setTextSize(3);
-    tft.setCursor(50, 30);
+    tft.setCursor(50, 31);
     tft.println(screenTitle);
 
     settingsButton.draw();

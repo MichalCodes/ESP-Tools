@@ -34,14 +34,21 @@ public:
         drawButtons();
 
         // hlavní hudba
-        //musicManager.setVolume(21);
+        musicManager.setVolume(21);
         musicManager.playMusic("/tetrisSong.mp3");
     }
 
     void update() {
         if (!active) return;
 
-        // ---- ovládací tlačítka ----
+        auto handleDelay = [this](unsigned long ms) {
+            unsigned long start = millis();
+            while (millis() - start < ms) {
+                musicManager.handleAudio(); 
+                delay(10); 
+            }
+        };
+
         if (btnBack.isTouched()) {
             exitGame();
             return;
@@ -50,13 +57,13 @@ public:
         if (btnLeft.isTouched()) {
             move(-1, 0);
             drawBoard();
-            delay(150);
+            handleDelay(150);
         }
 
         if (btnRight.isTouched()) {
             move(1, 0);
             drawBoard();
-            delay(150);
+            handleDelay(150);
         }
 
         if (btnDown.isTouched()) {
@@ -70,16 +77,15 @@ public:
                 if (collides()) showGameOver();
             }
             drawBoard();
-            delay(100); 
+            handleDelay(100);
         }
 
         if (btnRotate.isTouched()) {
             rotatePiece();
             drawBoard();
-            delay(150);
+            handleDelay(150);
         }
 
-        // ---- gravitační posun ----
         if (millis() - lastUpdate > fallDelay) {
             lastUpdate = millis();
             if (!move(0, 1)) {
@@ -94,7 +100,6 @@ public:
             drawBoard();
         }
 
-        // loop hudby a SFX
         musicManager.handleAudio();
     }
 
