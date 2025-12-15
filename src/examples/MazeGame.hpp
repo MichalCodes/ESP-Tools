@@ -27,7 +27,7 @@ public:
         playerY = 1;
         drawLevel();
 
-        musicManager.setVolume(21); // zesílení hudby
+        //musicManager.setVolume(21); // zesílení hudby
         musicManager.playMusic("/RatMouse.mp3"); // hlavní hudba
     }
 

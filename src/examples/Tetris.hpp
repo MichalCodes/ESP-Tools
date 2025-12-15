@@ -34,7 +34,7 @@ public:
         drawButtons();
 
         // hlavní hudba
-        musicManager.setVolume(21);
+        //musicManager.setVolume(21);
         musicManager.playMusic("/tetrisSong.mp3");
     }
 

@@ -13,7 +13,7 @@ class AudioManager {
 private:
     FileLoader& fileLoader;
     String currentMusicPath = "";
-    float volumeLevel = 0.5;
+    float volumeLevel = 0.5; // Stále ukládáme hodnotu v rozsahu 0.0 - 1.0
 
     I2SStream i2sStream;                
     VolumeStream volumeStream;          
@@ -27,7 +27,8 @@ public:
 
     void begin();
     
-    void setVolume(uint8_t vol);
+    // setVolume a getVolume stále používají rozsah 0-100 pro uživatelské rozhraní
+    void setVolume(uint8_t vol); 
     uint8_t getVolume() const;
 
     void playMusic(const char* path);

@@ -18,7 +18,7 @@ void MainScreen::draw() {
     tft.fillRect(0, 0, 800, 70, TFT_GREEN);
     tft.setTextColor(TFT_BLACK);
     tft.setTextSize(3);
-    tft.setCursor(50, 31);
+    tft.setCursor(50, 32);
     tft.println(screenTitle);
 
     settingsButton.draw();
