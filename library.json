@@ -1,0 +1,32 @@
+{
+  "name": "ESP_Tools",
+  "version": "1.0.0",
+  "description": "Implementuje nástroje na řízení HW a komponenty pro ESP32 projekty s displejem a dotykovým ovládáním.",
+  "keywords": "esp32, display, gfx, audio, ui",
+  "authors": [
+    {
+      "name": "Michal ČERMÁK",
+      "email": "michalcermak.mc@gmail.com",
+      "maintainer": true
+    }
+  ],
+  "license": "MIT",
+  "frameworks": "arduino",
+  "platforms": [
+    "espressif32"
+  ],
+  "dependencies": [
+    {
+      "name": "LovyanGFX",
+      "url": "https://github.com/lovyan03/LovyanGFX.git"
+    },
+    {
+      "name": "AudioTools",
+      "url": "https://github.com/pschatzmann/arduino-audio-tools.git"
+    },
+    {
+      "name": "libhelix",
+      "url": "https://github.com/pschatzmann/arduino-libhelix.git"
+    }
+  ]
+}
