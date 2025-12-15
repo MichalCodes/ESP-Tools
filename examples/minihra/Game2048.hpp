@@ -1,3 +1,4 @@
+#pragma once
 #include <LovyanGFX.hpp>
 #include "touch/Button.h"
 #include "touch/SwipeControler.h"

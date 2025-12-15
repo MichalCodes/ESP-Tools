@@ -1,0 +1,334 @@
+#pragma once
+#include <LovyanGFX.hpp>
+
+#include "tools.h"
+
+class GameTetris : public IAppModule {
+public:
+    GameTetris(LGFX &tft, AudioManager &music)
+    : tft(tft),
+      musicManager(music),
+      btnLeft(20, 400, 100, 60, "Left", tft),    
+      btnRight(130, 400, 100, 60, "Right", tft), 
+      btnDown(565, 400, 100, 60, "Down", tft),    
+      btnRotate(680, 400, 100, 60, "Rotate", tft), 
+      btnBack(650, 20, 100, 40, "Back", tft),     
+      active(false),
+      score(0) 
+    {
+        randomSeed(millis());
+        reset();
+    }
+
+    const char* getName() const override { return "Tetris"; }
+    const char* getIconPath() const override { return "/icons/tetris.bmp"; }
+    void run() override { startGame(); }
+    bool isActive() const override { return active; }
+
+    void startGame() {
+        active = true;
+        reset();
+        drawScreen();
+        drawButtons();
+
+        //musicManager.setVolume(21);
+        musicManager.playMusic("/tetrisSong.mp3");
+    }
+
+    void update() {
+        if (!active) return;
+
+        auto handleDelay = [this](unsigned long ms) {
+            unsigned long start = millis();
+            while (millis() - start < ms) {
+                musicManager.handleAudio(); 
+                delay(10); 
+            }
+        };
+
+        if (btnBack.isTouched()) {
+            exitGame();
+            return;
+        }
+
+        if (btnLeft.isTouched()) {
+            move(-1, 0);
+            drawBoard();
+            handleDelay(150);
+        }
+
+        if (btnRight.isTouched()) {
+            move(1, 0);
+            drawBoard();
+            handleDelay(150);
+        }
+
+        if (btnDown.isTouched()) {
+            if (!move(0, 1)) {
+                placePiece(); 
+                if (clearLines()) {
+                    drawBoard();
+                    drawScore();
+                }
+                spawnPiece();
+                if (collides()) showGameOver();
+            }
+            drawBoard();
+            handleDelay(100);
+        }
+
+        if (btnRotate.isTouched()) {
+            rotatePiece();
+            drawBoard();
+            handleDelay(150);
+        }
+
+        if (millis() - lastUpdate > fallDelay) {
+            lastUpdate = millis();
+            if (!move(0, 1)) {
+                placePiece(); 
+                if (clearLines()) {
+                    drawBoard();
+                    drawScore();
+                }
+                spawnPiece();
+                if (collides()) showGameOver();
+            }
+            drawBoard();
+        }
+
+        musicManager.handleAudio();
+    }
+
+private:
+    LGFX &tft;
+    AudioManager &musicManager;
+    Button btnLeft, btnRight, btnRotate, btnDown, btnBack;
+    bool active;
+    long score;
+
+    static const int W = 10;
+    static const int H = 20;
+    int board[H][W] = {0};
+
+    int pieceX, pieceY;
+    int currentPiece;
+    int rotation;
+    unsigned long lastUpdate = 0;
+    int fallDelay = 500; 
+
+    const int shapes[7][4][4][4] = {
+        // I
+        {{{0,0,0,0},{1,1,1,1},{0,0,0,0},{0,0,0,0}},
+         {{0,0,1,0},{0,0,1,0},{0,0,1,0},{0,0,1,0}},
+         {{0,0,0,0},{1,1,1,1},{0,0,0,0},{0,0,0,0}},
+         {{0,1,0,0},{0,1,0,0},{0,1,0,0},{0,1,0,0}}},
+        // O
+        {{{0,0,0,0},{0,1,1,0},{0,1,1,0},{0,0,0,0}},
+         {{0,0,0,0},{0,1,1,0},{0,1,1,0},{0,0,0,0}},
+         {{0,0,0,0},{0,1,1,0},{0,1,1,0},{0,0,0,0}},
+         {{0,0,0,0},{0,1,1,0},{0,1,1,0},{0,0,0,0}}},
+        // T
+        {{{0,0,0,0},{1,1,1,0},{0,1,0,0},{0,0,0,0}},
+         {{0,1,0,0},{1,1,0,0},{0,1,0,0},{0,0,0,0}},
+         {{0,1,0,0},{1,1,1,0},{0,0,0,0},{0,0,0,0}},
+         {{0,1,0,0},{0,1,1,0},{0,1,0,0},{0,0,0,0}}},
+        // L
+        {{{0,0,0,0},{1,1,1,0},{1,0,0,0},{0,0,0,0}},
+         {{1,1,0,0},{0,1,0,0},{0,1,0,0},{0,0,0,0}},
+         {{0,0,1,0},{1,1,1,0},{0,0,0,0},{0,0,0,0}},
+         {{0,1,0,0},{0,1,0,0},{0,1,1,0},{0,0,0,0}}},
+        // J
+        {{{0,0,0,0},{1,1,1,0},{0,0,1,0},{0,0,0,0}},
+         {{0,1,0,0},{0,1,0,0},{1,1,0,0},{0,0,0,0}},
+         {{1,0,0,0},{1,1,1,0},{0,0,0,0},{0,0,0,0}},
+         {{0,1,1,0},{0,1,0,0},{0,1,0,0},{0,0,0,0}}},
+        // S
+        {{{0,0,0,0},{0,1,1,0},{1,1,0,0},{0,0,0,0}},
+         {{1,0,0,0},{1,1,0,0},{0,1,0,0},{0,0,0,0}},
+         {{0,0,0,0},{0,1,1,0},{1,1,0,0},{0,0,0,0}},
+         {{1,0,0,0},{1,1,0,0},{0,1,0,0},{0,0,0,0}}},
+        // Z
+        {{{0,0,0,0},{1,1,0,0},{0,1,1,0},{0,0,0,0}},
+         {{0,1,0,0},{1,1,0,0},{1,0,0,0},{0,0,0,0}},
+         {{0,0,0,0},{1,1,0,0},{0,1,1,0},{0,0,0,0}},
+         {{0,1,0,0},{1,1,0,0},{1,0,0,0},{0,0,0,0}}}
+    };
+    
+    void reset() {
+        memset(board, 0, sizeof(board));
+        score = 0;
+        spawnPiece();
+    }
+
+    void spawnPiece() {
+        currentPiece = random(7);
+        rotation = 0;
+        pieceX = W/2 - 2;
+        pieceY = 0;
+    }
+
+    bool collides(int dx=0, int dy=0, int rot=-1) {
+        int r = (rot == -1) ? rotation : rot;
+        for(int y=0;y<4;y++)
+            for(int x=0;x<4;x++)
+                if(shapes[currentPiece][r][y][x]) {
+                    int nx = pieceX + x + dx;
+                    int ny = pieceY + y + dy;
+                    if(nx < 0 || nx >= W || ny >= H) return true;
+                    if(ny >= 0 && board[ny][nx]) return true;
+                }
+        return false;
+    }
+
+    bool move(int dx, int dy) {
+        if(!collides(dx, dy)) {
+            pieceX += dx;
+            pieceY += dy;
+            return true;
+        }
+        return false;
+    }
+
+    void rotatePiece() {
+        int newRot = (rotation + 1) % 4;
+        if(!collides(0, 0, newRot)) rotation = newRot;
+    }
+
+    void placePiece() {
+        for(int y=0;y<4;y++)
+            for(int x=0;x<4;x++)
+                if(shapes[currentPiece][rotation][y][x]) {
+                    int nx = pieceX + x;
+                    int ny = pieceY + y;
+                    if(ny>=0 && ny<H && nx>=0 && nx<W)
+                        board[ny][nx] = currentPiece+1;
+                }
+    }
+    
+    bool clearLines() {
+        bool anyCleared = false;
+        int linesCleared = 0; 
+        for(int y=H-1;y>=0;y--){
+            bool full = true;
+            for(int x=0;x<W;x++)
+                if(!board[y][x]) { full=false; break; }
+            if(full){
+                anyCleared = true;
+                linesCleared++; 
+                for(int yy=y;yy>0;yy--)
+                    for(int x=0;x<W;x++)
+                        board[yy][x] = board[yy-1][x];
+                for(int x=0;x<W;x++)
+                    board[0][x]=0;
+                y++;
+            }
+        }
+        
+        if (linesCleared > 0) {
+            if (linesCleared == 1) score += 100;
+            else if (linesCleared == 2) score += 300;
+            else if (linesCleared == 3) score += 500;
+            else if (linesCleared >= 4) score += 800;
+        }
+        
+        return anyCleared;
+    }
+
+    void dropPiece() {
+        while(move(0,1));
+        placePiece();
+        if (clearLines()) {
+            drawBoard();
+            drawScore();
+        }
+        spawnPiece();
+        if (collides()) showGameOver();
+    }
+
+    uint16_t getColor(int n) {
+        static uint16_t colors[8] = {
+            TFT_BLACK, TFT_CYAN, TFT_YELLOW, TFT_MAGENTA,
+            TFT_BLUE, TFT_GREEN, TFT_RED, TFT_ORANGE
+        };
+        return colors[n % 8];
+    }
+    
+    void drawScore() {
+        int x = 20;  
+        int y = 30;
+        
+        tft.fillRect(x, y, 200, 60, TFT_BLACK); 
+        
+        tft.setTextColor(TFT_WHITE);
+        tft.setTextSize(2);
+        
+        tft.setCursor(x, y);
+        tft.println("SCORE:");
+        
+        tft.setCursor(x + 10, y + 30);
+        tft.setTextSize(3);
+        tft.printf("%ld", score);
+    }
+    
+    void drawBoard() {
+        int startX = 300, startY = 60;
+        int blockSize = 20;
+        tft.fillRect(startX-2, startY-2, W*blockSize+4, H*blockSize+4, TFT_BLACK);
+
+        for(int y=0;y<H;y++)
+            for(int x=0;x<W;x++)
+                if(board[y][x])
+                    tft.fillRect(startX+x*blockSize, startY+y*blockSize, blockSize-1, blockSize-1, getColor(board[y][x]));
+                else
+                    tft.drawRect(startX+x*blockSize, startY+y*blockSize, blockSize-1, blockSize-1, TFT_DARKGREY);
+
+        for(int y=0;y<4;y++)
+            for(int x=0;x<4;x++)
+                if(shapes[currentPiece][rotation][y][x]) {
+                    int nx = pieceX + x;
+                    int ny = pieceY + y;
+                    if(ny>=0)
+                        tft.fillRect(startX+nx*blockSize, startY+ny*blockSize, blockSize-1, blockSize-1, getColor(currentPiece+1));
+                }
+    }
+
+    void drawScreen() {
+        tft.fillScreen(TFT_BLACK);
+        
+        tft.setTextColor(TFT_WHITE);
+        tft.setTextSize(3);
+        tft.setCursor(350, 20);
+        tft.println("TETRIS");
+        
+        drawScore(); 
+        drawBoard();
+    }
+
+    void drawButtons() {
+        btnLeft.draw();
+        btnRight.draw();
+        btnDown.draw();
+        btnRotate.draw();
+        btnBack.draw();
+    }
+    
+    void showGameOver() {
+        musicManager.stopMusic();
+        tft.fillRect(250, 200, 300, 100, TFT_RED);
+        tft.setTextColor(TFT_WHITE);
+        tft.setTextSize(3);
+        tft.setCursor(260, 220);
+        tft.println("GAME OVER");
+        tft.setTextSize(2);
+        tft.setCursor(260, 255);
+        tft.printf("Score: %ld", score); 
+        delay(3000);
+        exitGame();
+    }
+
+    void exitGame() {
+        musicManager.stopMusic();
+        active = false;
+    }
+};
