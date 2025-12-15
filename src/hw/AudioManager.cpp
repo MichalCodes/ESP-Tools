@@ -25,20 +25,15 @@ void AudioManager::begin() {
     AudioInfo defaultInfo(cfg.sample_rate, cfg.channels, cfg.bits_per_sample);
     volumeStream.begin(defaultInfo); 
     
-    // Aplikujeme výchozí/uloženou hlasitost
     setVolume(getVolume());
 }
 
 void AudioManager::setVolume(uint8_t vol) {
-    // Převod rozsahu 0-100 (pro UI) na 0.0-1.0 (pro VolumeStream)
     volumeLevel = (vol > 100 ? 100 : vol) / 100.0f;
-    
-    // Tuto hodnotu pošleme do VolumeStream
     volumeStream.setVolume(volumeLevel);
 }
 
 uint8_t AudioManager::getVolume() const {
-    // Převod zpět na rozsah 0-100 pro UI
     return (uint8_t)(volumeLevel * 100);
 }
 
@@ -67,7 +62,7 @@ void AudioManager::playMusic(const char* path) {
         AudioInfo info = decoder->audioInfo();
 
         volumeStream.begin(info); 
-        volumeStream.setVolume(volumeLevel); // APLIKUJEME AKTUÁLNÍ HLASITOST
+        volumeStream.setVolume(volumeLevel);
         i2sStream.setAudioInfo(info); 
         
         copier.begin(*decoder, audioFile);

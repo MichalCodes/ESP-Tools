@@ -31,4 +31,4 @@ private:
     uint16_t bgColor;
 };
 
-#endif // JOYSTICK_H
+#endif

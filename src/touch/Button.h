@@ -11,6 +11,8 @@ public:
     void draw(int newBgColor);
     bool isTouched();
     void setText(const char* label);
+    void setColor(uint16_t newBgColor);
+    bool checkCoordinates(int x, int y) const;
 
 private:
     int x, y, w, h;

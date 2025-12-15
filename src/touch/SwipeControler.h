@@ -1,5 +1,5 @@
 #pragma once
-#include <LovyanGFX.hpp> // Zajišťuje definici typu LGFX, což řeší chybu 'LGFX does not name a type'
+#include <LovyanGFX.hpp>
 #include "hw/gfx_conf.h"
 
 class SwipeController {

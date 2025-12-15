@@ -1,6 +1,5 @@
-#include "SwipeControler.h" // Správný include hlavičkového souboru
+#include "SwipeControler.h"
 
-// Definice konstruktoru
 SwipeController::SwipeController(LGFX &tft) : tft(tft), touchStartX(-1), touchStartY(-1), lastSwipe(NONE) {}
 
 void SwipeController::update() {

@@ -34,7 +34,6 @@ void Joystick::updateAutoCenter() {
 
     if (dx == 0 && dy == 0) return; 
 
-    // Zvýšeno z 3 na 8 pro mnohem rychlejší návrat (vyřeší pocit pomalosti)
     int step = 20; 
     int moveX = (dx > step ? step : (dx < -step ? -step : dx));
     int moveY = (dy > step ? step : (dy < -step ? -step : dy));

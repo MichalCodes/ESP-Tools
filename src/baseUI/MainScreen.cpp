@@ -18,7 +18,7 @@ void MainScreen::draw() {
     tft.fillRect(0, 0, 800, 70, TFT_GREEN);
     tft.setTextColor(TFT_BLACK);
     tft.setTextSize(3);
-    tft.setCursor(50, 32);
+    tft.setCursor(50, 33);
     tft.println(screenTitle);
 
     settingsButton.draw();
@@ -50,6 +50,7 @@ void MainScreen::draw() {
             currentY += ICON_HEIGHT + ICON_SPACING;
         }
     }
+    tft.setTextDatum(TL_DATUM);
 }
 
 bool MainScreen::isSettingsButtonTouched() {

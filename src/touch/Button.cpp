@@ -36,3 +36,12 @@ void Button::setText(const char* label) {
     currentLabel = label;
     draw(); 
 }
+
+void Button::setColor(uint16_t newBgColor) {
+    bgColor = newBgColor;
+    draw();
+}
+
+bool Button::checkCoordinates(int tx, int ty) const {
+    return (tx >= x && tx <= x + w && ty >= y && ty <= y + h);
+}

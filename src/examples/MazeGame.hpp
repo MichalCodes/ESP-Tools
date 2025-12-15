@@ -27,20 +27,19 @@ public:
         playerY = 1;
         drawLevel();
 
-        //musicManager.setVolume(21); // zesílení hudby
-        musicManager.playMusic("/RatMouse.mp3"); // hlavní hudba
+        //musicManager.setVolume(21);
+        musicManager.playMusic("/RatMouse.mp3");
     }
 
     void update() {
         if (!inGame) return;
 
-        // loop hudby a SFX
         musicManager.handleAudio();
 
         int tx, ty;
         if (tft.getTouch(&tx, &ty)) {
             if (backButton.isTouched()) {
-                musicManager.stopMusic(); // zastavení hudby
+                musicManager.stopMusic();
                 inGame = false;
                 return;
             } else if (joystick.isJoystickTouched(tx, ty)) {
@@ -68,7 +67,7 @@ private:
     int playerX, playerY;
     int currentLevel;
     bool inGame;
-    bool newLevelSoundPlayed; // kontrola pro jednorázový zvuk
+    bool newLevelSoundPlayed;
 
     void drawLevel() {
         tft.fillScreen(TFT_BLACK);
@@ -84,7 +83,6 @@ private:
         joystick.drawJoystick();
         drawPlayer();
 
-        // Spustit SFX pro nový level pouze jednou
         if (!newLevelSoundPlayed && currentLevel > 0) {
             newLevelSoundPlayed = true;
         }

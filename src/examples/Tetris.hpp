@@ -8,7 +8,6 @@ public:
     GameTetris(LGFX &tft, AudioManager &music)
     : tft(tft),
       musicManager(music),
-      // Tlačítka srovnána
       btnLeft(20, 400, 100, 60, "Left", tft),    
       btnRight(130, 400, 100, 60, "Right", tft), 
       btnDown(565, 400, 100, 60, "Down", tft),    
@@ -21,7 +20,6 @@ public:
         reset();
     }
 
-    // --- Implementace IAppModule ---
     const char* getName() const override { return "Tetris"; }
     const char* getIconPath() const override { return "/icons/tetris.bmp"; }
     void run() override { startGame(); }
@@ -33,7 +31,6 @@ public:
         drawScreen();
         drawButtons();
 
-        // hlavní hudba
         //musicManager.setVolume(21);
         musicManager.playMusic("/tetrisSong.mp3");
     }
@@ -119,11 +116,7 @@ private:
     int rotation;
     unsigned long lastUpdate = 0;
     int fallDelay = 500; 
-    
-    // Zde by normálně byly deklarace, ale jelikož je definujeme přímo zde, stačí definice.
-    // Zbytek kódu jsou definice privátních metod
-    
-    // Všechny tvary kostek
+
     const int shapes[7][4][4][4] = {
         // I
         {{{0,0,0,0},{1,1,1,1},{0,0,0,0},{0,0,0,0}},
@@ -161,8 +154,6 @@ private:
          {{0,0,0,0},{1,1,0,0},{0,1,1,0},{0,0,0,0}},
          {{0,1,0,0},{1,1,0,0},{1,0,0,0},{0,0,0,0}}}
     };
-    
-    // DEFINICE METOD (jsou v tomto pořadí potřeba, protože volají jedna druhou)
     
     void reset() {
         memset(board, 0, sizeof(board));
@@ -254,8 +245,6 @@ private:
         spawnPiece();
         if (collides()) showGameOver();
     }
-
-    // --- KRESLICÍ METODY ---
 
     uint16_t getColor(int n) {
         static uint16_t colors[8] = {
