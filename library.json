@@ -18,15 +18,15 @@
   "dependencies": [
     {
       "name": "LovyanGFX",
-      "url": "https://github.com/lovyan03/LovyanGFX.git"
+      "version": "https://github.com/lovyan03/LovyanGFX.git"
     },
     {
       "name": "AudioTools",
-      "url": "https://github.com/pschatzmann/arduino-audio-tools.git"
+      "version": "https://github.com/pschatzmann/arduino-audio-tools.git"
     },
     {
       "name": "libhelix",
-      "url": "https://github.com/pschatzmann/arduino-libhelix.git"
+      "version": "https://github.com/pschatzmann/arduino-libhelix.git"
     }
   ]
 }
