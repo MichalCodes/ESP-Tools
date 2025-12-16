@@ -1,12 +1,12 @@
 #include <Wire.h>
 #include <SPI.h>
 
-#define SWIPECONTROLLER_H
-#define BUTTON_H
-#define TRACKBAR_H
-#define FILELOADER_H
-#define AUDIOMANAGER_H
-#define MAINSCREEN_H
+#define USE_JOYSTICK
+#define USE_BUTTON
+#define USE_TRACKBAR
+#define USE_FILELOADER
+#define USE_AUDIOMANAGER
+#define USE_MAINSCREEN
 
 #include "tools.h"
 #include "Game2048.hpp"
