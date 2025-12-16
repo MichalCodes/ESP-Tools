@@ -1,11 +1,15 @@
 #pragma once
+
+#define USE_JOYSTICK
+#define USE_BUTTON
+#define USE_FILELOADER
+#define USE_AUDIOMANAGER
+
+#include "tools.h"
 #include <LovyanGFX.hpp>
-#include "touch/Joystick.h"
-#include "touch/Button.h"
 #include "levels.h"
-#include "hw/AudioManager.h"
-#include "hw/FileLoader.h"
 #include "baseUI/IAppModule.h"
+
 
 class MazeGame : public IAppModule {
 public:
