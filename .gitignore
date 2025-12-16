@@ -6,7 +6,8 @@
 .vscode/                 # VS Code konfigurace
 .idea/                   # IntelliJ/IDEA konfigurace
 *.code-workspace         # Soubory Workspace (např. .Bakalářka.code-workspace)
-
+/partitions/
+*.ini
 # Lokální pracovní složky
 /src/main.cpp
 /src/examples/

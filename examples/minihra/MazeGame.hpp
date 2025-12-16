@@ -1,15 +1,15 @@
 #pragma once
 
-#define USE_JOYSTICK
+#define USE_JOYSTICK // takhle se includuje
 #define USE_BUTTON
 #define USE_FILELOADER
 #define USE_AUDIOMANAGER
 #define USE_IAPPMODULE
 
 #include "tools.h"
-#include <LovyanGFX.hpp>
-#include "levels.h"
 
+// patří hře už
+#include "levels.h"
 
 class MazeGame : public IAppModule {
 public:

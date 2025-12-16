@@ -10,7 +10,6 @@
       "maintainer": true
     }
   ],
-  "license": "MIT",
   "frameworks": "arduino",
   "platforms": [
     "espressif32"

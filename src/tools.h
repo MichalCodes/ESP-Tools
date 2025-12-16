@@ -17,12 +17,19 @@
     #include "touch/TrackBar.h"
 #endif
 
+#ifdef USE_SWIPECONTROLLER
+    #include "touch/SwipeController.h"
+#endif
+
 // ============ HW ============
 #ifdef USE_FILELOADER
     #include "hw/FileLoader.h"
 #endif
 
 #ifdef USE_AUDIOMANAGER
+    #ifndef USE_FILELOADER
+        #include "hw/FileLoader.h"
+    #endif
     #include "hw/AudioManager.h"
 #endif
 

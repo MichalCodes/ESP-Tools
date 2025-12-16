@@ -1,6 +1,7 @@
 #pragma once
-#include <LovyanGFX.hpp>
-
+#define USE_BUTTON
+#define USE_AUDIOMANAGER
+#define USE_IAPPMODULE
 #include "tools.h"
 
 class GameTetris : public IAppModule {
@@ -332,3 +333,4 @@ private:
         active = false;
     }
 };
+

@@ -1,5 +1,5 @@
 #pragma once
-#include <LovyanGFX.hpp>
+#include <LovyanGFX.hpp> // includovat se dí i přímo
 #include "touch/Button.h"
 #include "touch/SwipeControler.h"
 #include "baseUI/IAppModule.h"
