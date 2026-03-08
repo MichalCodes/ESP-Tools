@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['resetjoystick_142',['resetJoystick',['../classJoystick.html#ab79cfc624cda74e9f3d48a6a21f3537d',1,'Joystick::resetJoystick()'],['../classJoystick.html#ab79cfc624cda74e9f3d48a6a21f3537d',1,'Joystick::resetJoystick()']]],
-  ['run_143',['run',['../classIAppModule.html#acad5202d9a50590ddf21872e65aaae72',1,'IAppModule']]]
+  ['panel_5fcrowpanel70_176',['Panel_CrowPanel70',['../classPanel__CrowPanel70.html#afc50eeb67ff04b462de6dcb16a5e9faf',1,'Panel_CrowPanel70']]],
+  ['playmusic_177',['playMusic',['../classAudioManager.html#ac81c83c60a616067e5afb18be139ef8e',1,'AudioManager']]]
 ];

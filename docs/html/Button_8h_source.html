@@ -70,51 +70,41 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="Button_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#ifndef JOYSTICK_H</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno"><a class="line" href="Button_8h.html#ae19ffeffc1ea95d4748e4acc2f5a7a04">    3</a></span>&#160;<span class="preprocessor">#define JOYSTICK_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="gfx__conf_8h.html">hw/gfx_conf.h</a>&quot;</span>  </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="gfx__conf_8h.html">hw/gfx_conf.h</a>&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;math.h&gt;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;Arduino.h&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="classJoystick.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="classJoystick.html">Joystick</a> {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="classJoystick.html#ac5a3762913814fcbbc1abdbfa554f985">Joystick</a>(<span class="keywordtype">int</span> centerX, <span class="keywordtype">int</span> centerY, <span class="keywordtype">int</span> outerRadius, <span class="keywordtype">int</span> innerRadius, <a class="code" href="classPanel__CrowPanel70.html">LGFX</a> &amp;tft, uint16_t bgColor);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classJoystick.html#a6f7147956d8098b28b91fb7fd2d03136">drawJoystick</a>();</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classJoystick.html#a5445cb142a70a6a27b01e9a998d4de3b">moveJoystick</a>(<span class="keywordtype">int</span> touchX, <span class="keywordtype">int</span> touchY);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classJoystick.html#ae4ab26384829138690f20b607b6e2dcf">updateAutoCenter</a>();</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classJoystick.html#aa81a87787781ba23ac5bf4c07585c5fd">isJoystickTouched</a>(<span class="keywordtype">int</span> touchX, <span class="keywordtype">int</span> touchY);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classJoystick.html#ab79cfc624cda74e9f3d48a6a21f3537d">resetJoystick</a>();</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classJoystick.html#ab163014f9299257eb4f582240d552cf5">getJoystickX</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classJoystick.html#ae8703b2f5228da1db171a6fdfcc17fff">getJoystickY</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">int</span> centerX, centerY;     </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">int</span> outerRadius;          </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">int</span> innerRadius;          </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">int</span> joystickX, joystickY; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <a class="code" href="classPanel__CrowPanel70.html">LGFX</a> &amp;<a class="code" href="Settings_8cpp.html#a99cf2958babb566636177dadd59641c3">tft</a>;                </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    uint16_t bgColor;         </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;};</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aSettings_8cpp_html_a99cf2958babb566636177dadd59641c3"><div class="ttname"><a href="Settings_8cpp.html#a99cf2958babb566636177dadd59641c3">tft</a></div><div class="ttdeci">LGFX tft</div><div class="ttdef"><b>Definition:</b> gfx_conf.cpp:4</div></div>
-<div class="ttc" id="aclassJoystick_html"><div class="ttname"><a href="classJoystick.html">Joystick</a></div><div class="ttdoc">Třída pro simulaci analogového joysticku na dotykovém displeji.</div><div class="ttdef"><b>Definition:</b> Button.h:17</div></div>
-<div class="ttc" id="aclassJoystick_html_a5445cb142a70a6a27b01e9a998d4de3b"><div class="ttname"><a href="classJoystick.html#a5445cb142a70a6a27b01e9a998d4de3b">Joystick::moveJoystick</a></div><div class="ttdeci">void moveJoystick(int touchX, int touchY)</div><div class="ttdoc">Přesune střed joysticku na základě dotyku.</div><div class="ttdef"><b>Definition:</b> Joystick.cpp:13</div></div>
-<div class="ttc" id="aclassJoystick_html_a6f7147956d8098b28b91fb7fd2d03136"><div class="ttname"><a href="classJoystick.html#a6f7147956d8098b28b91fb7fd2d03136">Joystick::drawJoystick</a></div><div class="ttdeci">void drawJoystick()</div><div class="ttdoc">Prvotní vykreslení celého joysticku (základna i střed).</div><div class="ttdef"><b>Definition:</b> Joystick.cpp:7</div></div>
-<div class="ttc" id="aclassJoystick_html_aa81a87787781ba23ac5bf4c07585c5fd"><div class="ttname"><a href="classJoystick.html#aa81a87787781ba23ac5bf4c07585c5fd">Joystick::isJoystickTouched</a></div><div class="ttdeci">bool isJoystickTouched(int touchX, int touchY)</div><div class="ttdoc">Ověří, zda se zadaný dotyk nachází v oblasti joysticku.</div><div class="ttdef"><b>Definition:</b> Joystick.cpp:49</div></div>
-<div class="ttc" id="aclassJoystick_html_ab163014f9299257eb4f582240d552cf5"><div class="ttname"><a href="classJoystick.html#ab163014f9299257eb4f582240d552cf5">Joystick::getJoystickX</a></div><div class="ttdeci">int getJoystickX() const</div><div class="ttdoc">Získá aktuální X-ovou souřadnici středu joysticku.</div><div class="ttdef"><b>Definition:</b> Joystick.cpp:62</div></div>
-<div class="ttc" id="aclassJoystick_html_ab79cfc624cda74e9f3d48a6a21f3537d"><div class="ttname"><a href="classJoystick.html#ab79cfc624cda74e9f3d48a6a21f3537d">Joystick::resetJoystick</a></div><div class="ttdeci">void resetJoystick()</div><div class="ttdoc">Okamžitě vycentruje joystick a překreslí jej do výchozí polohy.</div><div class="ttdef"><b>Definition:</b> Joystick.cpp:55</div></div>
-<div class="ttc" id="aclassJoystick_html_ac5a3762913814fcbbc1abdbfa554f985"><div class="ttname"><a href="classJoystick.html#ac5a3762913814fcbbc1abdbfa554f985">Joystick::Joystick</a></div><div class="ttdeci">Joystick(int centerX, int centerY, int outerRadius, int innerRadius, LGFX &amp;tft, uint16_t bgColor)</div><div class="ttdoc">Konstruktor pro vytvoření virtuálního joysticku.</div><div class="ttdef"><b>Definition:</b> Joystick.cpp:3</div></div>
-<div class="ttc" id="aclassJoystick_html_ae4ab26384829138690f20b607b6e2dcf"><div class="ttname"><a href="classJoystick.html#ae4ab26384829138690f20b607b6e2dcf">Joystick::updateAutoCenter</a></div><div class="ttdeci">void updateAutoCenter()</div><div class="ttdoc">Zajišťuje plynulý návrat joysticku do středové polohy.</div><div class="ttdef"><b>Definition:</b> Joystick.cpp:31</div></div>
-<div class="ttc" id="aclassJoystick_html_ae8703b2f5228da1db171a6fdfcc17fff"><div class="ttname"><a href="classJoystick.html#ae8703b2f5228da1db171a6fdfcc17fff">Joystick::getJoystickY</a></div><div class="ttdeci">int getJoystickY() const</div><div class="ttdoc">Získá aktuální Y-ovou souřadnici středu joysticku.</div><div class="ttdef"><b>Definition:</b> Joystick.cpp:66</div></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classButton.html">   18</a></span>&#160;<span class="keyword">class </span><a class="code" href="classButton.html">Button</a> {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="classButton.html#a343bf243e38db37436d19da52260a74c">Button</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> w, <span class="keywordtype">int</span> h, <span class="keyword">const</span> <span class="keywordtype">char</span>* label, <a class="code" href="classPanel__CrowPanel70.html">LGFX</a> &amp;tftRef,</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;           uint16_t bgColor = TFT_YELLOW, uint16_t textColor = TFT_BLACK, uint8_t textSize = 2);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classButton.html#a0380207dc9e4edcd0272207a39c7cdeb">draw</a>();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classButton.html#a0380207dc9e4edcd0272207a39c7cdeb">draw</a>(<span class="keywordtype">int</span> newBgColor);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classButton.html#a9c47f3b26136b3bc8a56e80af4b66d45">isTouched</a>();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classButton.html#affd51f87994b14b06cf470e5fc3fa1a4">setText</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>* label);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classButton.html#aeda6980c5e88310f2f7b2274d604bd64">setColor</a>(uint16_t newBgColor);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classButton.html#a5107546a3c71d0bc85a05a66fe3e5f12">checkCoordinates</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordtype">int</span> x, y, w, h;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    String currentLabel;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <a class="code" href="classPanel__CrowPanel70.html">LGFX</a> &amp;tft;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    uint16_t bgColor;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    uint16_t textColor;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    uint8_t textSize;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;};</div>
+<div class="ttc" id="aclassButton_html"><div class="ttname"><a href="classButton.html">Button</a></div><div class="ttdoc">Třída pro tvorbu a správu interaktivních grafických tlačítek.</div><div class="ttdef"><b>Definition:</b> Button.h:18</div></div>
+<div class="ttc" id="aclassButton_html_a0380207dc9e4edcd0272207a39c7cdeb"><div class="ttname"><a href="classButton.html#a0380207dc9e4edcd0272207a39c7cdeb">Button::draw</a></div><div class="ttdeci">void draw()</div><div class="ttdoc">Vykreslí tlačítko na displej s aktuálně nastavenými parametry.</div><div class="ttdef"><b>Definition:</b> Button.cpp:10</div></div>
+<div class="ttc" id="aclassButton_html_a343bf243e38db37436d19da52260a74c"><div class="ttname"><a href="classButton.html#a343bf243e38db37436d19da52260a74c">Button::Button</a></div><div class="ttdeci">Button(int x, int y, int w, int h, const char *label, LGFX &amp;tftRef, uint16_t bgColor=TFT_YELLOW, uint16_t textColor=TFT_BLACK, uint8_t textSize=2)</div><div class="ttdoc">Konstruktor tlačítka.</div><div class="ttdef"><b>Definition:</b> Button.cpp:3</div></div>
+<div class="ttc" id="aclassButton_html_a5107546a3c71d0bc85a05a66fe3e5f12"><div class="ttname"><a href="classButton.html#a5107546a3c71d0bc85a05a66fe3e5f12">Button::checkCoordinates</a></div><div class="ttdeci">bool checkCoordinates(int x, int y) const</div><div class="ttdoc">Ruční kontrola, zda dané souřadnice leží uvnitř tlačítka.</div><div class="ttdef"><b>Definition:</b> Button.cpp:45</div></div>
+<div class="ttc" id="aclassButton_html_a9c47f3b26136b3bc8a56e80af4b66d45"><div class="ttname"><a href="classButton.html#a9c47f3b26136b3bc8a56e80af4b66d45">Button::isTouched</a></div><div class="ttdeci">bool isTouched()</div><div class="ttdoc">Zkontroluje, zda je na tlačítko aktuálně klikáno.</div><div class="ttdef"><b>Definition:</b> Button.cpp:27</div></div>
+<div class="ttc" id="aclassButton_html_aeda6980c5e88310f2f7b2274d604bd64"><div class="ttname"><a href="classButton.html#aeda6980c5e88310f2f7b2274d604bd64">Button::setColor</a></div><div class="ttdeci">void setColor(uint16_t newBgColor)</div><div class="ttdoc">Změní barvu pozadí tlačítka.</div><div class="ttdef"><b>Definition:</b> Button.cpp:40</div></div>
+<div class="ttc" id="aclassButton_html_affd51f87994b14b06cf470e5fc3fa1a4"><div class="ttname"><a href="classButton.html#affd51f87994b14b06cf470e5fc3fa1a4">Button::setText</a></div><div class="ttdeci">void setText(const char *label)</div><div class="ttdoc">Změní text na tlačítku.</div><div class="ttdef"><b>Definition:</b> Button.cpp:35</div></div>
 <div class="ttc" id="aclassPanel__CrowPanel70_html"><div class="ttname"><a href="classPanel__CrowPanel70.html">Panel_CrowPanel70</a></div><div class="ttdef"><b>Definition:</b> gfx_conf.h:33</div></div>
 <div class="ttc" id="agfx__conf_8h_html"><div class="ttname"><a href="gfx__conf_8h.html">gfx_conf.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->

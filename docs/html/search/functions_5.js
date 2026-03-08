@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['isactive_132',['isActive',['../classIAppModule.html#ab147071747f825e6008a75f43c3107bf',1,'IAppModule::isActive()'],['../classSettingsManager.html#a7bdc887127bee6652d3a4bc098a01cff',1,'SettingsManager::isActive()']]],
-  ['isjoysticktouched_133',['isJoystickTouched',['../classJoystick.html#aa81a87787781ba23ac5bf4c07585c5fd',1,'Joystick::isJoystickTouched(int touchX, int touchY)'],['../classJoystick.html#aa81a87787781ba23ac5bf4c07585c5fd',1,'Joystick::isJoystickTouched(int touchX, int touchY)']]],
-  ['issettingsbuttontouched_134',['isSettingsButtonTouched',['../classMainScreen.html#a182bf3e2a6603df14b7f8790e11eb2d2',1,'MainScreen']]]
+  ['handleaudio_161',['handleAudio',['../classAudioManager.html#a10c673b8e48cdbe6263e6981e5c4393d',1,'AudioManager']]],
+  ['handletouch_162',['handleTouch',['../classMainScreen.html#ab68003521267b234ac172abc57b73a45',1,'MainScreen::handleTouch()'],['../classTrackBar.html#a2479f15d40f4e084bf1c61f39b89e972',1,'TrackBar::handleTouch()']]],
+  ['hide_163',['hide',['../classSettingsManager.html#a72e2ddac6a4a05fa517b1c261ef58d99',1,'SettingsManager']]]
 ];

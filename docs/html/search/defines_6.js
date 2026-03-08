@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['trackbar_5fbg_5fcolor_182',['TRACKBAR_BG_COLOR',['../TrackBar_8cpp.html#adc443bb02aa5ceb6366fd7d62c67dcfa',1,'TrackBar.cpp']]]
+  ['screenheight_229',['screenHeight',['../gfx__conf_8h.html#a8c472bd07ea66dbb884992785271e1d1',1,'gfx_conf.h']]],
+  ['screenwidth_230',['screenWidth',['../gfx__conf_8h.html#a76da26d519b3a4158847daa8783a7a5b',1,'gfx_conf.h']]]
 ];

@@ -107,7 +107,7 @@ Public Member Functions</h2></td></tr>
 <li>Sleduje trajektorii dotyku od stisknutí po uvolnění a vyhodnocuje směr pohybu (nahoru, dolů, doleva, doprava).</li>
 <li></li>
 <li><div class="fragment"><div class="line"><a class="code" href="classSwipeController.html">SwipeController</a> swipe(tft);</div>
-<div class="line"><span class="keywordtype">void</span> loop() {</div>
+<div class="line"><span class="keywordtype">void</span> <a class="code" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f">loop</a>() {</div>
 <div class="line">swipe.update();</div>
 <div class="line"><span class="keywordflow">if</span> (swipe.getSwipe() == <a class="code" href="classSwipeController.html#a410ee79b1e52b6a260c0c073a4c0f34faea5a2fa8c23c72e847aa03896e23679c">SwipeController::LEFT</a>) {</div>
 <div class="line"><span class="comment">// Přepnout na další stránku</span></div>
@@ -115,6 +115,7 @@ Public Member Functions</h2></td></tr>
 <div class="line">}</div>
 <div class="ttc" id="aclassSwipeController_html"><div class="ttname"><a href="classSwipeController.html">SwipeController</a></div><div class="ttdoc">Ovladač pro detekci dotykových gest (přejetí prstem) na displeji.</div><div class="ttdef"><b>Definition:</b> SwipeControler.h:21</div></div>
 <div class="ttc" id="aclassSwipeController_html_a410ee79b1e52b6a260c0c073a4c0f34faea5a2fa8c23c72e847aa03896e23679c"><div class="ttname"><a href="classSwipeController.html#a410ee79b1e52b6a260c0c073a4c0f34faea5a2fa8c23c72e847aa03896e23679c">SwipeController::LEFT</a></div><div class="ttdeci">@ LEFT</div><div class="ttdoc">Přejetí prstem směrem doleva.</div><div class="ttdef"><b>Definition:</b> SwipeControler.h:31</div></div>
+<div class="ttc" id="amain_8cpp_html_afe461d27b9c48d5921c00d521181f12f"><div class="ttname"><a href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f">loop</a></div><div class="ttdeci">void loop()</div><div class="ttdef"><b>Definition:</b> main.cpp:115</div></div>
 </div><!-- fragment --> </li>
 </ul>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
@@ -210,7 +211,7 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Periodická aktualizace stavu dotyku. </p>
-<p>Tuto metodu je nutné volat v každém průchodu smyčkou loop(). Interně ukládá počáteční a koncové body dotyku pro výpočet gesta. </p>
+<p>Tuto metodu je nutné volat v každém průchodu smyčkou <a class="el" href="main_8cpp.html#afe461d27b9c48d5921c00d521181f12f">loop()</a>. Interně ukládá počáteční a koncové body dotyku pro výpočet gesta. </p>
 
 </div>
 </div>

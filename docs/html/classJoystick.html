@@ -72,34 +72,10 @@ $(function() {
 <p>Třída pro simulaci analogového joysticku na dotykovém displeji.  
  <a href="classJoystick.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="Button_8h_source.html">Button.h</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="Joystick_8h_source.html">Joystick.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac5a3762913814fcbbc1abdbfa554f985"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJoystick.html#ac5a3762913814fcbbc1abdbfa554f985">Joystick</a> (int centerX, int centerY, int outerRadius, int innerRadius, <a class="el" href="gfx__conf_8h.html#a52a67f27ad91ed038b1c8c7eef645311">LGFX</a> &amp;tft, uint16_t bgColor)</td></tr>
-<tr class="memdesc:ac5a3762913814fcbbc1abdbfa554f985"><td class="mdescLeft">&#160;</td><td class="mdescRight">Konstruktor pro vytvoření virtuálního joysticku.  <a href="classJoystick.html#ac5a3762913814fcbbc1abdbfa554f985">More...</a><br /></td></tr>
-<tr class="separator:ac5a3762913814fcbbc1abdbfa554f985"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f7147956d8098b28b91fb7fd2d03136"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJoystick.html#a6f7147956d8098b28b91fb7fd2d03136">drawJoystick</a> ()</td></tr>
-<tr class="memdesc:a6f7147956d8098b28b91fb7fd2d03136"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prvotní vykreslení celého joysticku (základna i střed).  <a href="classJoystick.html#a6f7147956d8098b28b91fb7fd2d03136">More...</a><br /></td></tr>
-<tr class="separator:a6f7147956d8098b28b91fb7fd2d03136"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5445cb142a70a6a27b01e9a998d4de3b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJoystick.html#a5445cb142a70a6a27b01e9a998d4de3b">moveJoystick</a> (int touchX, int touchY)</td></tr>
-<tr class="memdesc:a5445cb142a70a6a27b01e9a998d4de3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Přesune střed joysticku na základě dotyku.  <a href="classJoystick.html#a5445cb142a70a6a27b01e9a998d4de3b">More...</a><br /></td></tr>
-<tr class="separator:a5445cb142a70a6a27b01e9a998d4de3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4ab26384829138690f20b607b6e2dcf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJoystick.html#ae4ab26384829138690f20b607b6e2dcf">updateAutoCenter</a> ()</td></tr>
-<tr class="memdesc:ae4ab26384829138690f20b607b6e2dcf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zajišťuje plynulý návrat joysticku do středové polohy.  <a href="classJoystick.html#ae4ab26384829138690f20b607b6e2dcf">More...</a><br /></td></tr>
-<tr class="separator:ae4ab26384829138690f20b607b6e2dcf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa81a87787781ba23ac5bf4c07585c5fd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJoystick.html#aa81a87787781ba23ac5bf4c07585c5fd">isJoystickTouched</a> (int touchX, int touchY)</td></tr>
-<tr class="memdesc:aa81a87787781ba23ac5bf4c07585c5fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ověří, zda se zadaný dotyk nachází v oblasti joysticku.  <a href="classJoystick.html#aa81a87787781ba23ac5bf4c07585c5fd">More...</a><br /></td></tr>
-<tr class="separator:aa81a87787781ba23ac5bf4c07585c5fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab79cfc624cda74e9f3d48a6a21f3537d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJoystick.html#ab79cfc624cda74e9f3d48a6a21f3537d">resetJoystick</a> ()</td></tr>
-<tr class="memdesc:ab79cfc624cda74e9f3d48a6a21f3537d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Okamžitě vycentruje joystick a překreslí jej do výchozí polohy.  <a href="classJoystick.html#ab79cfc624cda74e9f3d48a6a21f3537d">More...</a><br /></td></tr>
-<tr class="separator:ab79cfc624cda74e9f3d48a6a21f3537d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab163014f9299257eb4f582240d552cf5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJoystick.html#ab163014f9299257eb4f582240d552cf5">getJoystickX</a> () const</td></tr>
-<tr class="memdesc:ab163014f9299257eb4f582240d552cf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Získá aktuální X-ovou souřadnici středu joysticku.  <a href="classJoystick.html#ab163014f9299257eb4f582240d552cf5">More...</a><br /></td></tr>
-<tr class="separator:ab163014f9299257eb4f582240d552cf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8703b2f5228da1db171a6fdfcc17fff"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJoystick.html#ae8703b2f5228da1db171a6fdfcc17fff">getJoystickY</a> () const</td></tr>
-<tr class="memdesc:ae8703b2f5228da1db171a6fdfcc17fff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Získá aktuální Y-ovou souřadnici středu joysticku.  <a href="classJoystick.html#ae8703b2f5228da1db171a6fdfcc17fff">More...</a><br /></td></tr>
-<tr class="separator:ae8703b2f5228da1db171a6fdfcc17fff"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5a3762913814fcbbc1abdbfa554f985"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJoystick.html#ac5a3762913814fcbbc1abdbfa554f985">Joystick</a> (int centerX, int centerY, int outerRadius, int innerRadius, <a class="el" href="gfx__conf_8h.html#a52a67f27ad91ed038b1c8c7eef645311">LGFX</a> &amp;tft, uint16_t bgColor)</td></tr>
 <tr class="memdesc:ac5a3762913814fcbbc1abdbfa554f985"><td class="mdescLeft">&#160;</td><td class="mdescRight">Konstruktor pro vytvoření virtuálního joysticku.  <a href="classJoystick.html#ac5a3762913814fcbbc1abdbfa554f985">More...</a><br /></td></tr>
 <tr class="separator:ac5a3762913814fcbbc1abdbfa554f985"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -133,72 +109,7 @@ Public Member Functions</h2></td></tr>
 </ul>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ac5a3762913814fcbbc1abdbfa554f985"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac5a3762913814fcbbc1abdbfa554f985">&#9670;&nbsp;</a></span>Joystick() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">Joystick::Joystick </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>centerX</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>centerY</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>outerRadius</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>innerRadius</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="gfx__conf_8h.html#a52a67f27ad91ed038b1c8c7eef645311">LGFX</a> &amp;&#160;</td>
-          <td class="paramname"><em>tft</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint16_t&#160;</td>
-          <td class="paramname"><em>bgColor</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Konstruktor pro vytvoření virtuálního joysticku. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">centerX</td><td>X-ová souřadnice středu celého joysticku. </td></tr>
-    <tr><td class="paramname">centerY</td><td>Y-ová souřadnice středu celého joysticku. </td></tr>
-    <tr><td class="paramname">outerRadius</td><td>Poloměr vnějšího (pevného) kruhu. </td></tr>
-    <tr><td class="paramname">innerRadius</td><td>Poloměr vnitřního (pohyblivého) kruhu. </td></tr>
-    <tr><td class="paramname">tft</td><td>Reference na LovyanGFX displej pro vykreslování. </td></tr>
-    <tr><td class="paramname">bgColor</td><td>Barva pozadí pro překreslování pohybu (obvykle TFT_BLACK). </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ac5a3762913814fcbbc1abdbfa554f985"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac5a3762913814fcbbc1abdbfa554f985">&#9670;&nbsp;</a></span>Joystick() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac5a3762913814fcbbc1abdbfa554f985">&#9670;&nbsp;</a></span>Joystick()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -264,26 +175,7 @@ Public Member Functions</h2></td></tr>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a6f7147956d8098b28b91fb7fd2d03136"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f7147956d8098b28b91fb7fd2d03136">&#9670;&nbsp;</a></span>drawJoystick() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Joystick::drawJoystick </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Prvotní vykreslení celého joysticku (základna i střed). </p>
-
-</div>
-</div>
-<a id="a6f7147956d8098b28b91fb7fd2d03136"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6f7147956d8098b28b91fb7fd2d03136">&#9670;&nbsp;</a></span>drawJoystick() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f7147956d8098b28b91fb7fd2d03136">&#9670;&nbsp;</a></span>drawJoystick()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -302,27 +194,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="ab163014f9299257eb4f582240d552cf5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab163014f9299257eb4f582240d552cf5">&#9670;&nbsp;</a></span>getJoystickX() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Joystick::getJoystickX </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Získá aktuální X-ovou souřadnici středu joysticku. </p>
-<dl class="section return"><dt>Returns</dt><dd>Hodnota X (lze mapovat na rychlost nebo směr pohybu). </dd></dl>
-
-</div>
-</div>
-<a id="ab163014f9299257eb4f582240d552cf5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab163014f9299257eb4f582240d552cf5">&#9670;&nbsp;</a></span>getJoystickX() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab163014f9299257eb4f582240d552cf5">&#9670;&nbsp;</a></span>getJoystickX()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -342,27 +214,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="ae8703b2f5228da1db171a6fdfcc17fff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae8703b2f5228da1db171a6fdfcc17fff">&#9670;&nbsp;</a></span>getJoystickY() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Joystick::getJoystickY </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Získá aktuální Y-ovou souřadnici středu joysticku. </p>
-<dl class="section return"><dt>Returns</dt><dd>Hodnota Y (lze mapovat na rychlost nebo směr pohybu). </dd></dl>
-
-</div>
-</div>
-<a id="ae8703b2f5228da1db171a6fdfcc17fff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae8703b2f5228da1db171a6fdfcc17fff">&#9670;&nbsp;</a></span>getJoystickY() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae8703b2f5228da1db171a6fdfcc17fff">&#9670;&nbsp;</a></span>getJoystickY()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -382,45 +234,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="aa81a87787781ba23ac5bf4c07585c5fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa81a87787781ba23ac5bf4c07585c5fd">&#9670;&nbsp;</a></span>isJoystickTouched() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Joystick::isJoystickTouched </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>touchX</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>touchY</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Ověří, zda se zadaný dotyk nachází v oblasti joysticku. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">touchX</td><td>X-ová souřadnice dotyku. </td></tr>
-    <tr><td class="paramname">touchY</td><td>Y-ová souřadnice dotyku. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true pokud je dotyk v oblasti vnějšího kruhu. </dd></dl>
-
-</div>
-</div>
-<a id="aa81a87787781ba23ac5bf4c07585c5fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa81a87787781ba23ac5bf4c07585c5fd">&#9670;&nbsp;</a></span>isJoystickTouched() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aa81a87787781ba23ac5bf4c07585c5fd">&#9670;&nbsp;</a></span>isJoystickTouched()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -458,44 +272,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="a5445cb142a70a6a27b01e9a998d4de3b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5445cb142a70a6a27b01e9a998d4de3b">&#9670;&nbsp;</a></span>moveJoystick() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Joystick::moveJoystick </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>touchX</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>touchY</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Přesune střed joysticku na základě dotyku. </p>
-<p>Metoda automaticky vypočítá vzdálenost od středu a zajistí, aby se vnitřní kruh nepohnul mimo hranice vnějšího kruhu. </p><dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">touchX</td><td>Aktuální X-ová souřadnice dotyku. </td></tr>
-    <tr><td class="paramname">touchY</td><td>Aktuální Y-ová souřadnice dotyku. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a5445cb142a70a6a27b01e9a998d4de3b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5445cb142a70a6a27b01e9a998d4de3b">&#9670;&nbsp;</a></span>moveJoystick() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a5445cb142a70a6a27b01e9a998d4de3b">&#9670;&nbsp;</a></span>moveJoystick()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -532,26 +309,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="ab79cfc624cda74e9f3d48a6a21f3537d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab79cfc624cda74e9f3d48a6a21f3537d">&#9670;&nbsp;</a></span>resetJoystick() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Joystick::resetJoystick </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Okamžitě vycentruje joystick a překreslí jej do výchozí polohy. </p>
-
-</div>
-</div>
-<a id="ab79cfc624cda74e9f3d48a6a21f3537d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab79cfc624cda74e9f3d48a6a21f3537d">&#9670;&nbsp;</a></span>resetJoystick() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ab79cfc624cda74e9f3d48a6a21f3537d">&#9670;&nbsp;</a></span>resetJoystick()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -570,27 +328,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a id="ae4ab26384829138690f20b607b6e2dcf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae4ab26384829138690f20b607b6e2dcf">&#9670;&nbsp;</a></span>updateAutoCenter() <span class="overload">[1/2]</span></h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Joystick::updateAutoCenter </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Zajišťuje plynulý návrat joysticku do středové polohy. </p>
-<p>Tuto metodu je vhodné volat v hlavní smyčce hry, pokud 'isJoystickTouched' vrátí false. </p>
-
-</div>
-</div>
-<a id="ae4ab26384829138690f20b607b6e2dcf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae4ab26384829138690f20b607b6e2dcf">&#9670;&nbsp;</a></span>updateAutoCenter() <span class="overload">[2/2]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4ab26384829138690f20b607b6e2dcf">&#9670;&nbsp;</a></span>updateAutoCenter()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -610,7 +348,6 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/touch/<a class="el" href="Button_8h_source.html">Button.h</a></li>
 <li>src/touch/<a class="el" href="Joystick_8h_source.html">Joystick.h</a></li>
 <li>src/touch/<a class="el" href="Joystick_8cpp.html">Joystick.cpp</a></li>
 </ul>

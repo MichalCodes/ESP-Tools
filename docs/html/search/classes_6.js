@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['settingsmanager_94',['SettingsManager',['../classSettingsManager.html',1,'']]],
-  ['swipecontroller_95',['SwipeController',['../classSwipeController.html',1,'']]]
+  ['panel_5fcrowpanel70_121',['Panel_CrowPanel70',['../classPanel__CrowPanel70.html',1,'']]]
 ];

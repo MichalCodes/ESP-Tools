@@ -1,8 +1,13 @@
 var searchData=
 [
-  ['mainscreen_50',['MainScreen',['../classMainScreen.html',1,'MainScreen'],['../classMainScreen.html#a8c0287b8a62477f49d7971e92e20d211',1,'MainScreen::MainScreen()']]],
-  ['mainscreen_2ecpp_51',['MainScreen.cpp',['../MainScreen_8cpp.html',1,'']]],
-  ['mainscreen_2eh_52',['MainScreen.h',['../MainScreen_8h.html',1,'']]],
-  ['movejoystick_53',['moveJoystick',['../classJoystick.html#a5445cb142a70a6a27b01e9a998d4de3b',1,'Joystick::moveJoystick(int touchX, int touchY)'],['../classJoystick.html#a5445cb142a70a6a27b01e9a998d4de3b',1,'Joystick::moveJoystick(int touchX, int touchY)']]],
-  ['musicmanager_54',['MusicManager',['../AudioManager_8h.html#a5e87ca07afec7561dd1da292d0285dca',1,'AudioManager.h']]]
+  ['main_2ecpp_56',['main.cpp',['../main_8cpp.html',1,'']]],
+  ['mainmenu_57',['mainMenu',['../main_8cpp.html#aa2bcb2f9637026310925541324a93045',1,'main.cpp']]],
+  ['mainscreen_58',['MainScreen',['../classMainScreen.html',1,'MainScreen'],['../classMainScreen.html#a8c0287b8a62477f49d7971e92e20d211',1,'MainScreen::MainScreen()']]],
+  ['mainscreen_2ecpp_59',['MainScreen.cpp',['../MainScreen_8cpp.html',1,'']]],
+  ['mainscreen_2eh_60',['MainScreen.h',['../MainScreen_8h.html',1,'']]],
+  ['mazegame_61',['mazeGame',['../main_8cpp.html#a3dbe191f8870dd9c83761a61ac035b80',1,'main.cpp']]],
+  ['movejoystick_62',['moveJoystick',['../classJoystick.html#a5445cb142a70a6a27b01e9a998d4de3b',1,'Joystick']]],
+  ['musicmanager_63',['musicManager',['../main_8cpp.html#a201b44d4156b5b0c3aa0aa6d1c4aced8',1,'main.cpp']]],
+  ['musicmanager_64',['MusicManager',['../AudioManager_8h.html#a5e87ca07afec7561dd1da292d0285dca',1,'AudioManager.h']]],
+  ['musictask_65',['musicTask',['../main_8cpp.html#a0516810364735779b29dba75e76f2acf',1,'main.cpp']]]
 ];

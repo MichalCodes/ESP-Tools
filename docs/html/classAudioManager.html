@@ -106,7 +106,7 @@ Public Member Functions</h2></td></tr>
 <ul>
 <li>Instance vyžaduje existující objekt <a class="el" href="classFileLoader.html" title="Třída pro zjednodušenou práci se soubory na SD kartě.">FileLoader</a>. Příklad inicializace: <div class="fragment"><div class="line"><a class="code" href="classFileLoader.html">FileLoader</a> loader;</div>
 <div class="line"><a class="code" href="classAudioManager.html">AudioManager</a> audio(loader);</div>
-<div class="line">* <span class="keywordtype">void</span> setup() {</div>
+<div class="line">* <span class="keywordtype">void</span> <a class="code" href="main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d">setup</a>() {</div>
 <div class="line">loader.<a class="code" href="classFileLoader.html#a3a3b58da4345467e137fac341f5e6695">begin</a>();</div>
 <div class="line">audio.begin();</div>
 <div class="line">audio.playMusic(<span class="stringliteral">&quot;/track.mp3&quot;</span>);</div>
@@ -114,6 +114,7 @@ Public Member Functions</h2></td></tr>
 <div class="ttc" id="aclassAudioManager_html"><div class="ttname"><a href="classAudioManager.html">AudioManager</a></div><div class="ttdoc">Třída pro správu přehrávání audia (MP3/WAV) z SD karty přes I2S rozhraní.</div><div class="ttdef"><b>Definition:</b> AudioManager.h:26</div></div>
 <div class="ttc" id="aclassFileLoader_html"><div class="ttname"><a href="classFileLoader.html">FileLoader</a></div><div class="ttdoc">Třída pro zjednodušenou práci se soubory na SD kartě.</div><div class="ttdef"><b>Definition:</b> FileLoader.h:16</div></div>
 <div class="ttc" id="aclassFileLoader_html_a3a3b58da4345467e137fac341f5e6695"><div class="ttname"><a href="classFileLoader.html#a3a3b58da4345467e137fac341f5e6695">FileLoader::begin</a></div><div class="ttdeci">bool begin(uint8_t csPin=10, uint8_t sck=12, uint8_t miso=13, uint8_t mosi=11)</div><div class="ttdoc">Inicializuje rozhraní SPI a připojí SD kartu.</div><div class="ttdef"><b>Definition:</b> FileLoader.cpp:4</div></div>
+<div class="ttc" id="amain_8cpp_html_a4fc01d736fe50cf5b977f755b675f11d"><div class="ttname"><a href="main_8cpp.html#a4fc01d736fe50cf5b977f755b675f11d">setup</a></div><div class="ttdeci">void setup()</div><div class="ttdef"><b>Definition:</b> main.cpp:92</div></div>
 </div><!-- fragment --> </li>
 </ul>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>

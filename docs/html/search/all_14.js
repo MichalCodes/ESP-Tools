@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['_7eaudiomanager_86',['~AudioManager',['../classAudioManager.html#ad94dc46723c6d7cf8c81fc3772a842aa',1,'AudioManager']]],
-  ['_7eiappmodule_87',['~IAppModule',['../classIAppModule.html#a960ca357dbbcfd53941b424aadd830a7',1,'IAppModule']]]
+  ['xgametaskhandle_110',['xGameTaskHandle',['../main_8cpp.html#a1560774165b0b27c9891cba30c594867',1,'main.cpp']]],
+  ['xhardwaresemaphore_111',['xHardwareSemaphore',['../main_8cpp.html#a67063b1398e5a358008020951df92340',1,'main.cpp']]],
+  ['xmusictaskhandle_112',['xMusicTaskHandle',['../main_8cpp.html#a3350cf4bfe23d0349d3aef56feccfede',1,'main.cpp']]]
 ];
