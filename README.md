@@ -1,25 +1,3 @@
-
-# ESP-Tools Library
-
-## Úvod
-Knihovna **ESP-Tools** je modulární framework pro ESP32 s displeji LovyanGFX.
-Slouží k rychlému vývoji grafických rozhraní, her a multimediálních aplikací.
-
-## Hlavní funkce
-* **UI prvky:** Tlačítka, TrackBary, Joysticky.
-* **Audio:** Podpora MP3 a WAV (AudioManager).
-* **SD Karta:** Zjednodušená práce se soubory (FileLoader).
-* **Multitasking:** Připraveno pro běh na dvou jádrech (FreeRTOS).
-
-## Jak začít
-Pro aktivaci modulů definujte makra v `tools.h`:
-
-```cpp
-#define USE_JOYSTICK
-#define USE_AUDIOMANAGER
-#include "tools.h"
-
-
 # ESP_Tools
 
 ### Hlavní Funkce
