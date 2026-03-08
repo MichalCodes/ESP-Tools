@@ -14,6 +14,12 @@
  * CrowPanel_50 means CrowPanel 5.0inch Board
  * CrowPanel_70 means CrowPanel 7.0inch Board
  ******************************************************************************/
+
+/**
+ * @file Konfigurační soubor grafické knihovny
+ * @brief jsou zde 3 volby dle velikostidispleje #define CrowPanel_70 // #define CrowPanel_50 // #define CrowPanel_43
+ */
+
 #define CrowPanel_70
 // #define CrowPanel_50
 // #define CrowPanel_43

@@ -56,3 +56,28 @@ void FileLoader::listFiles(const char* dirname, uint8_t levels) {
         file = root.openNextFile();
     }
 }
+
+bool FileLoader::writeFile(const char* path, const char* message, bool append) {
+    String p = path;
+    if (!p.startsWith("/")) p = "/" + p;
+
+    File file = SD.open(p.c_str(), append ? FILE_APPEND : FILE_WRITE);
+
+    if (!file) {
+        Serial.printf("SD ERROR: Nepodařilo se otevřít %s pro zápis!\n", p.c_str());
+        return false;
+    }
+
+    if (file.print(message)) {
+        file.close();
+        return true;
+    } else {
+        Serial.println("SD ERROR: Zápis selhal!");
+        file.close();
+        return false;
+    }
+}
+
+bool FileLoader::saveInt(const char* path, int value) {
+    return writeFile(path, String(value).c_str(), false);
+}
