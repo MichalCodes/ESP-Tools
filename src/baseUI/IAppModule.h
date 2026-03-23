@@ -26,12 +26,6 @@ public:
     virtual const char* getName() const = 0;
 
     /**
-     * @brief Vrátí cestu k souboru ikony na SD kartě.
-     * @return Cesta k BMP nebo PNG souboru (např. "/icons/wifi.bmp").
-     */
-    virtual const char* getIconPath() const = 0; 
-
-    /**
      * @brief Hlavní metoda pro spuštění vnitřní logiky aplikace.
      * @details Tato metoda je volána z MainScreenu při kliknutí na ikonu.
      */

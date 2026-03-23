@@ -57,7 +57,6 @@ public:
     }
 
     const char* getName() const override { return "RatMaze"; } // NOVÉ
-    const char* getIconPath() const override { return "/icons/maze.bmp"; }
     void run() override { startGame(); }
     bool isActive() const override { return inGame; }
 

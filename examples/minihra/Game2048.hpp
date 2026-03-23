@@ -20,7 +20,6 @@ public:
     void exitGame() { active = false; }
     void run() override { drawScreen(); }
     const char* getName() const override { return "2048"; }
-    const char* getIconPath() const override { return "/icons/2048.bmp"; }
 
     void drawScreen() {
         active = true;

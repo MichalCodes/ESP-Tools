@@ -22,7 +22,6 @@ public:
     }
 
     const char* getName() const override { return "Tetris"; }
-    const char* getIconPath() const override { return "/icons/tetris.bmp"; }
     void run() override { startGame(); }
     bool isActive() const override { return active; }
 
